@@ -12,11 +12,11 @@ data class YoutubeQRModel(
 ) {
     companion object {
         private const val YOUTUBE_URL = "https://www.youtube.com/watch?v="
-        private const val YOUTUBE_CHANNEL = "https://www.youtube.com/channel/"
+        private const val YOUTUBE_CHANNEL = "https://www.youtube.com/"
 
         public fun isYoutubeLink(text: String): Boolean {
             val lower = text.lowercase()
-            return lower.contains("youtube.com") || lower.contains("youtu.be")
+            return lower.contains("youtube.com")
         }
     }
 
@@ -45,20 +45,13 @@ data class YoutubeQRModel(
                             .substringBefore("&")
                     }
 
-                    input.contains("youtu.be/") -> {
-                        input.substringAfter("youtu.be/")
-                            .substringBefore("?")
-                    }
-
                     else -> ""
                 }
             }
             // 频道ID提取
             YoutubeType.CHANNEL -> {
-                if (input.contains("/channel/")) {
-                    input.substringAfter("/channel/")
-                        .substringBefore("?")
-                        .substringBefore("/")
+                if (input.contains("@")) {
+                    input.substringAfter("/www.youtube.com/")
                 } else {
                     ""
                 }
@@ -70,12 +63,9 @@ data class YoutubeQRModel(
                         input.substringAfter("watch?v=")
                             .substringBefore("&")
                     }
-
-                    input.contains("youtu.be/") -> {
-                        input.substringAfter("youtu.be/")
-                            .substringBefore("?")
+                    input.contains("@") -> {
+                        input.substringAfter("/www.youtube.com/")
                     }
-
                     else -> ""
                 }
             }

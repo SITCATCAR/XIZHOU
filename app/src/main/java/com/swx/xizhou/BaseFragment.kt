@@ -11,7 +11,6 @@ abstract class BaseFragment<vb: ViewBinding>(val infate:(LayoutInflater, ViewGro
 
     private var _binding:vb?=null
     protected val binding get() = _binding!!
-    // 子类可用于检查binding是否可用（异步回调安全）
     protected val isBindingAvailable: Boolean get() = _binding != null
     override fun onCreateView(
         inflater: LayoutInflater,

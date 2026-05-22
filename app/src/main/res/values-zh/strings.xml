@@ -5,10 +5,10 @@
     <string name="create">创建</string>
     <string name="url">URL</string>
     <string name="video_id">视频 ID</string>
-    <string name="channel_id">频道 ID</string>
+    <string name="channel_url">频道 链接</string>
     <string name="hint_youtube_url">请输入 YouTube 链接</string>
     <string name="hint_youtube_video_id">请输入 YouTube 视频 ID</string>
-    <string name="hint_youtube_channel_id">请输入 YouTube 频道 ID</string>
+    <string name="hint_youtube_channel_url">请输入 YouTube 频道 链接</string>
     <string name="generate_qr_code">生成二维码</string>
     <string name="save">保存</string>
     <string name="share">分享</string>

@@ -76,7 +76,7 @@
                     android:layout_height="48dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="@string/channel_id" />
+                    android:text="@string/channel_url" />
 
             </LinearLayout>
 

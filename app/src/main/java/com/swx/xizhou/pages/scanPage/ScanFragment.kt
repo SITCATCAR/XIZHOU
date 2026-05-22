@@ -26,6 +26,7 @@ import com.swx.xizhou.model.CalendarQRModel
 import com.swx.xizhou.model.XQRModel
 import com.swx.xizhou.model.YoutubeQRModel
 import com.swx.xizhou.activity.ScanResultActivity
+import com.swx.xizhou.model.YoutubeType
 import com.swx.xizhou.pages.historyPage.HistoryPagerFragment
 import com.swx.xizhou.util.PermissionHelper
 import kotlinx.coroutines.Dispatchers
@@ -226,6 +227,7 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
             ScanResultActivity.TYPE_YOUTUBE -> {
                 val model= YoutubeQRModel()
                 model.input=value
+                model.type= YoutubeType.URL
                 val dto = HistoryItemDTO(
                     model.input, HistoryType.YOUTUBE, model.getID(),
                     System.currentTimeMillis()

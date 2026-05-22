@@ -81,7 +81,7 @@ class YoutubeCreateActivity : BaseActivity<ActivityYoutubeCreateBinding>(
         val hint = when (model.type) {
             YoutubeType.URL -> getString(R.string.hint_youtube_url)
             YoutubeType.VIDEO -> getString(R.string.hint_youtube_video_id)
-            YoutubeType.CHANNEL -> getString(R.string.hint_youtube_channel_id)
+            YoutubeType.CHANNEL -> getString(R.string.hint_youtube_channel_url)
         }
         binding.etInput.hint = hint
     }

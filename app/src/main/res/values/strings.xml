@@ -5,10 +5,10 @@
     <string name="create">Create</string>
     <string name="url">URL</string>
     <string name="video_id">Video ID</string>
-    <string name="channel_id">Channel ID</string>
+    <string name="channel_url">Channel URL</string>
     <string name="hint_youtube_url">Enter YouTube URL</string>
     <string name="hint_youtube_video_id">Enter YouTube Video ID</string>
-    <string name="hint_youtube_channel_id">Enter YouTube Channel ID</string>
+    <string name="hint_youtube_channel_url">Enter YouTube Channel URL</string>
     <string name="generate_qr_code">Generate QR Code</string>
     <string name="save">Save</string>
     <string name="share">Share</string>
