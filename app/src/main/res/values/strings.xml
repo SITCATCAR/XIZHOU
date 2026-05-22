@@ -1,0 +1,120 @@
+<resources>
+    <string name="app_name">XIZHOU</string>
+
+    <!-- YouTube Create Activity -->
+    <string name="create">Create</string>
+    <string name="url">URL</string>
+    <string name="video_id">Video ID</string>
+    <string name="channel_id">Channel ID</string>
+    <string name="hint_youtube_url">Enter YouTube URL</string>
+    <string name="hint_youtube_video_id">Enter YouTube Video ID</string>
+    <string name="hint_youtube_channel_id">Enter YouTube Channel ID</string>
+    <string name="generate_qr_code">Generate QR Code</string>
+    <string name="save">Save</string>
+    <string name="share">Share</string>
+    <string name="error_empty_input">Please enter content</string>
+    <string name="username">Username</string>
+
+    <!-- X Create Activity -->
+    <string name="hint_x_url">Enter X URL</string>
+    <string name="hint_x_username">Enter X Username</string>
+
+    <!-- History Edit -->
+    <string name="edit_title">Edit Title</string>
+    <string name="hint_new_title">Enter new title</string>
+    <string name="confirm">Confirm</string>
+    <string name="cancel">Cancel</string>
+    <string name="title_updated">Title updated</string>
+    <string name="title_empty_error">Title cannot be empty</string>
+    <string name="has_no_data">nothing here~</string>
+
+    <!-- History Selection and Delete -->
+    <string name="select_mode">Select</string>
+    <string name="exit_selection">Exit</string>
+    <string name="select_all">Select All</string>
+    <string name="delete">Delete</string>
+    <string name="delete_confirm">Delete Confirmation</string>
+    <string name="delete_confirm_message">Are you sure you want to delete %d items?</string>
+    <string name="delete_completed">Deleted %d items</string>
+    <string name="selection_title">Select Items</string>
+    <string name="selected_count">%d selected</string>
+    <string name="history">History</string>
+    <string name="item_detail_message">Item %d</string>
+
+    <!-- Calendar Create Activity -->
+    <string name="calendar_event_title">Event Title</string>
+    <string name="calendar_location">Location</string>
+    <string name="calendar_description">Description</string>
+    <string name="start_time">Start Time</string>
+    <string name="end_time">End Time</string>
+    <string name="select_date">Select Date</string>
+    <string name="select_time">Select Time</string>
+    <string name="all_day">All Day</string>
+
+    <!-- Hints -->
+    <string name="hint_calendar_title">Enter event title</string>
+    <string name="hint_calendar_location">Enter location (optional)</string>
+    <string name="hint_calendar_description">Enter event description (optional)</string>
+
+    <!-- Date/Time Format -->
+    <string name="date_time_format" formatted="false">%s %s</string>
+    <string name="date_format">yyyy-MM-dd</string>
+    <string name="time_format">HH:mm</string>
+
+    <!-- Validation -->
+    <string name="error_empty_title">Please enter event title</string>
+    <string name="error_end_before_start">End time cannot be earlier than start time</string>
+    <string name="calendar_generated">Calendar QR code generated</string>
+    <string name="qr_code">QR Code</string>
+
+    <!-- History Display Activity -->
+    <string name="history_detail">History Detail</string>
+    <string name="title">Title</string>
+    <string name="qr_code_content">QR Code Content</string>
+    <string name="type_youtube">YouTube</string>
+    <string name="type_calendar">Calendar</string>
+    <string name="type_text">Text</string>
+    <string name="type_x">X</string>
+    <string name="content_label">Content</string>
+
+    <!-- Save to Gallery -->
+    <string name="saved_to_gallery">Saved to gallery</string>
+    <string name="save_failed">Save failed: %s</string>
+    <string name="qr_code_not_found">QR code not found</string>
+    <string name="permission_denied">Permission denied</string>
+
+    <!-- Scan Result -->
+    <string name="scan_result">Scan Result</string>
+    <string name="result_youtube">YouTube</string>
+    <string name="result_calendar">Calendar Event</string>
+    <string name="result_text">Text</string>
+    <string name="result_x">X</string>
+    <string name="open">Open</string>
+    <string name="add_to_calendar">Add to Calendar</string>
+
+    <!-- Gallery -->
+    <string name="gallery">Gallery</string>
+
+    <!-- Errors -->
+    <string name="error_record_not_found">Record not found</string>
+    <string name="error_qr_image_not_found">QR code image not found</string>
+    <string name="error_generation_failed">Generation failed</string>
+    <string name="error_no_history">No history data</string>
+    <string name="error_permission_refused">Permission denied</string>
+    <string name="error_invalid_calendar_data">Invalid calendar data</string>
+    <string name="error_save_unknown">Unknown error</string>
+    <string name="error_save_media_entry">Failed to create media entry</string>
+
+    <!-- Tab Labels -->
+    <string name="tab_scan">SCAN</string>
+    <string name="tab_create">CREATE</string>
+
+    <!-- Toast Messages -->
+    <string name="toast_insert_success">Insert Success!</string>
+    <string name="untitled">Untitled</string>
+
+    <!-- Create Types -->
+    <string name="create_type_x">X</string>
+    <string name="create_type_youtube">YouTube</string>
+    <string name="create_type_calendar">Calendar</string>
+</resources>

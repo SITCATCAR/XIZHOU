@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 基础颜色 -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <!-- XIZHOU 绿色主题色 -->
+    <color name="colorPrimary">#10B981</color>
+    <color name="colorPrimaryDark">#059669</color>
+    <color name="colorAccent">#F59E0B</color>
+
+    <!-- 语义化颜色 -->
+    <color name="xizhou_primary">#10B981</color>
+    <color name="xizhou_primary_dark">#059669</color>
+    <color name="xizhou_primary_light">#6EE7B7</color>
+    <color name="xizhou_secondary">#F59E0B</color>
+    <color name="xizhou_secondary_dark">#D97706</color>
+
+    <!-- 渐变色 -->
+    <color name="xizhou_gradient_start">#14B8A6</color>
+    <color name="xizhou_gradient_end">#10B981</color>
+
+    <!-- 背景色 -->
+    <color name="xizhou_background">#F9FAFB</color>
+    <color name="xizhou_surface">#FFFFFF</color>
+    <color name="xizhou_surface_variant">#F3F4F6</color>
+
+    <!-- 文字色 -->
+    <color name="xizhou_on_primary">#FFFFFF</color>
+    <color name="xizhou_on_surface">#111827</color>
+    <color name="xizhou_on_surface_variant">#6B7280</color>
+
+    <!-- 功能色 -->
+    <color name="xizhou_success">#10B981</color>
+    <color name="xizhou_error">#EF4444</color>
+    <color name="xizhou_warning">#F59E0B</color>
+    <color name="xizhou_info">#3B82F6</color>
+
+    <!-- 边框和分割线 -->
+    <color name="xizhou_border">#E5E7EB</color>
+    <color name="xizhou_divider">#E5E7EB</color>
+
+    <color name="mask">#4D000000</color>
+</resources>

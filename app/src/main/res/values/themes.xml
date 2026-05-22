@@ -1,0 +1,19 @@
+<resources>
+    <!-- Base application theme. -->
+    <style name="Base.Theme.XIZHOU" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- XIZHOU 绿色主题 -->
+        <item name="colorPrimary">@color/xizhou_primary</item>
+        <item name="colorPrimaryDark">@color/xizhou_primary_dark</item>
+        <item name="colorAccent">@color/xizhou_secondary</item>
+
+        <!-- 背景和表面 -->
+        <item name="android:colorBackground">@color/xizhou_background</item>
+        <item name="android:windowBackground">@color/xizhou_surface</item>
+
+        <!-- 文字颜色 -->
+        <item name="android:textColorPrimary">@color/xizhou_on_surface</item>
+        <item name="android:textColorSecondary">@color/xizhou_on_surface_variant</item>
+    </style>
+
+    <style name="Theme.XIZHOU" parent="Base.Theme.XIZHOU" />
+</resources>

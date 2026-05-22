@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 暗色模式 - 绿色主题 -->
+    <color name="xizhou_primary">#10B981</color>
+    <color name="xizhou_primary_dark">#059669</color>
+    <color name="xizhou_primary_light">#6EE7B7</color>
+
+    <!-- 暗色背景 -->
+    <color name="xizhou_background">#111827</color>
+    <color name="xizhou_surface">#1F2937</color>
+    <color name="xizhou_surface_variant">#374151</color>
+
+    <!-- 暗色文字 -->
+    <color name="xizhou_on_primary">#FFFFFF</color>
+    <color name="xizhou_on_surface">#F9FAFB</color>
+    <color name="xizhou_on_surface_variant">#D1D5DB</color>
+
+    <!-- 暗色边框 -->
+    <color name="xizhou_border">#374151</color>
+    <color name="xizhou_divider">#374151</color>
+</resources>

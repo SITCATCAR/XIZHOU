@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- XIZHOU 通用按钮样式 -->
+    <style name="XIZHOUButton" parent="Widget.AppCompat.Button">
+        <item name="android:textColor">@color/xizhou_on_primary</item>
+        <item name="android:background">@drawable/bg_button_gradient</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+</resources>
