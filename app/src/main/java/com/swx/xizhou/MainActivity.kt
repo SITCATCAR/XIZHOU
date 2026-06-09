@@ -1,10 +1,12 @@
 package com.swx.xizhou
 
 import android.os.Bundle
+import android.view.ViewGroup
 import androidx.activity.enableEdgeToEdge
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowCompat
 import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updateLayoutParams
 import androidx.core.view.updatePadding
 import com.swx.xizhou.databinding.ActivityMainBinding
 import com.swx.xizhou.pages.createPage.CreateFragment
@@ -27,13 +29,13 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         //使用replace fragment会崩溃
         initFragment()
         //开启虚拟按钮
-        WindowCompat.setDecorFitsSystemWindows(window, false)
+//        WindowCompat.setDecorFitsSystemWindows(window, false)
         ViewCompat.setOnApplyWindowInsetsListener(binding.layoutBottomBar.root) { v, insets ->
-            val bottom = insets.getInsets(
-                WindowInsetsCompat.Type.navigationBars()
-            ).bottom
-            v.updatePadding(bottom = bottom)
-            insets
+            val insets = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
+            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
+                bottomMargin=insets.bottom
+            }
+           WindowInsetsCompat.CONSUMED
         }
     }
 

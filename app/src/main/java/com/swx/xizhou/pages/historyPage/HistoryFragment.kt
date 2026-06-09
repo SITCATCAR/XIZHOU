@@ -5,9 +5,13 @@ import android.view.Menu
 import android.view.MenuInflater
 import android.view.MenuItem
 import android.view.View
+import android.view.WindowInsets
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
+import androidx.core.view.updatePadding
 import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
@@ -26,13 +30,20 @@ class HistoryFragment :
     lateinit var stateMachine: HistoryStateMachine
         private set
 
-    val toolbar get() = binding.toolbar
-
     private val pagerFragments = mutableListOf<HistoryPagerFragment>()
 
     val selectedIds = mutableSetOf<Long>()
 
     override fun initView() {
+        ViewCompat.setOnApplyWindowInsetsListener(binding.toolbar) { v, insets ->
+            val bars = insets.getInsets(WindowInsetsCompat.Type.systemBars() or WindowInsetsCompat.Type.displayCutout())
+            v.updatePadding(
+                top = bars.top,
+                left = bars.left,
+                right = bars.right
+            )
+            insets
+        }
         binding.pager.adapter = HistoryPagerAdapter(this)
         bindTabLayout(binding.tabLayout, binding.pager)
         setupToolbar()
