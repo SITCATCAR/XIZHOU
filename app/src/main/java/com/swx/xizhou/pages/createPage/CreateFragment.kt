@@ -1,6 +1,9 @@
 package com.swx.xizhou.pages.createPage
 
 import android.content.Intent
+import android.view.Menu
+import android.view.MenuInflater
+import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import com.swx.xizhou.BaseFragment
 import com.swx.xizhou.activity.CalenderCreateActivity
@@ -17,6 +20,8 @@ class CreateFragment: BaseFragment<CreateFragmentBinding>(CreateFragmentBinding:
     private val onCreateItemClickEvent = Event<CreateItemClickEvent>()
 
     override fun initView() {
+        setupToolbar()
+        enableInsetsView(binding.toolbar,true,false)
         binding.RCView.layoutManager= GridLayoutManager(context,3)
 
         binding.RCView.adapter= CreateAdapter(activity,list,onCreateItemClickEvent)
@@ -49,5 +54,16 @@ class CreateFragment: BaseFragment<CreateFragmentBinding>(CreateFragmentBinding:
                 startActivity(intent)
             }
         }
+    }
+
+    private fun setupToolbar(){
+        binding.toolbar.title=getString(R.string.create_title)
+        binding.toolbar.inflateMenu(R.menu.create_menu)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        inflater.inflate(R.menu.create_menu, menu)
+        binding.toolbar.title = getString(R.string.create_title)
+        super.onCreateOptionsMenu(menu, inflater)
     }
 }

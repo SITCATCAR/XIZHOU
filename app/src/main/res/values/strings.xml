@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">XIZHOU</string>
+    <!--Create Fragment-->
+    <string name="create_title">Create</string>
 
     <!-- YouTube Create Activity -->
     <string name="create">Create</string>

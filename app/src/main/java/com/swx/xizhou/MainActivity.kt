@@ -28,15 +28,8 @@ class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::infl
         scanFragment= ScanFragment()
         //使用replace fragment会崩溃
         initFragment()
-        //开启虚拟按钮
-//        WindowCompat.setDecorFitsSystemWindows(window, false)
-        ViewCompat.setOnApplyWindowInsetsListener(binding.layoutBottomBar.root) { v, insets ->
-            val insets = insets.getInsets(WindowInsetsCompat.Type.navigationBars())
-            v.updateLayoutParams<ViewGroup.MarginLayoutParams> {
-                bottomMargin=insets.bottom
-            }
-           WindowInsetsCompat.CONSUMED
-        }
+        //适配虚拟按钮
+        enableInsetsView(binding.layoutBottomBar.root,false,true)
     }
 
     override fun initAction() {
