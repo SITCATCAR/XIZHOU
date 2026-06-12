@@ -1,21 +1,24 @@
 package com.swx.xizhou
 
-import android.os.Build
+import android.content.Context
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.view.LayoutInflater
 import android.view.View
-import android.view.WindowInsets
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import androidx.core.view.updatePadding
 import androidx.viewbinding.ViewBinding
+import com.swx.xizhou.util.LanguageManager
 
 abstract class BaseActivity <vb: ViewBinding>(val inflate:(LayoutInflater)->vb) : AppCompatActivity() {
 
     protected lateinit var binding: vb
+
+    override fun attachBaseContext(newBase: Context) {
+        super.attachBaseContext(LanguageManager.wrapContext(newBase))
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding=inflate(layoutInflater)

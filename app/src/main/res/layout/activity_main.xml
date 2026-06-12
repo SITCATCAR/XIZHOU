@@ -12,6 +12,7 @@
         android:id="@+id/m_fragment_holder"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/xizhou_background"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@id/bottom_bar_divider"/>
 

@@ -1,0 +1,290 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/settingsRoot"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/xizhou_background">
+
+    <ScrollView
+        android:id="@+id/settingsScroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="ifContentScrolls"
+        android:paddingStart="@dimen/cm_dp_20"
+        android:paddingTop="@dimen/cm_dp_24"
+        android:paddingEnd="@dimen/cm_dp_20"
+        android:paddingBottom="@dimen/cm_dp_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvSettingsTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_title"
+                android:textColor="@color/xizhou_on_surface"
+                android:textSize="@dimen/cm_sp_30"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvSettingsSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/cm_dp_8"
+                android:text="@string/settings_subtitle"
+                android:textColor="@color/xizhou_on_surface_variant"
+                android:textSize="@dimen/cm_sp_14" />
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardProfile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/cm_dp_24"
+                app:cardBackgroundColor="@color/xizhou_surface"
+                app:cardCornerRadius="@dimen/cm_dp_8"
+                app:cardElevation="@dimen/cm_dp_2"
+                app:strokeColor="@color/xizhou_border"
+                app:strokeWidth="@dimen/cm_dp_1">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/cm_dp_18">
+
+                    <TextView
+                        android:layout_width="@dimen/cm_dp_48"
+                        android:layout_height="@dimen/cm_dp_48"
+                        android:background="@drawable/bg_setting_brand"
+                        android:gravity="center"
+                        android:text="@string/settings_brand_mark"
+                        android:textColor="@color/xizhou_on_primary"
+                        android:textSize="@dimen/cm_sp_22"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/cm_dp_14"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/app_name"
+                            android:textColor="@color/xizhou_on_surface"
+                            android:textSize="@dimen/cm_sp_18"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvCurrentLanguage"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/cm_dp_4"
+                            android:textColor="@color/xizhou_on_surface_variant"
+                            android:textSize="@dimen/cm_sp_13" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/cm_dp_24"
+                android:text="@string/settings_section_preferences"
+                android:textColor="@color/xizhou_on_surface"
+                android:textSize="@dimen/cm_sp_16"
+                android:textStyle="bold" />
+
+            <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cm_dp_10"
+            app:cardBackgroundColor="@color/xizhou_surface"
+            app:cardCornerRadius="@dimen/cm_dp_8"
+            app:cardElevation="@dimen/cm_dp_1"
+            app:strokeColor="@color/xizhou_border"
+            app:strokeWidth="@dimen/cm_dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:id="@+id/layoutLanguageHeader"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="@dimen/cm_dp_18"
+                    android:paddingTop="@dimen/cm_dp_16"
+                    android:paddingEnd="@dimen/cm_dp_18"
+                    android:paddingBottom="@dimen/cm_dp_14">
+
+                    <ImageView
+                        android:layout_width="@dimen/cm_dp_36"
+                        android:layout_height="@dimen/cm_dp_36"
+                        android:background="@drawable/bg_setting_icon"
+                        android:padding="@dimen/cm_dp_8"
+                        android:src="@drawable/ic_language" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/cm_dp_12"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_language"
+                            android:textColor="@color/xizhou_on_surface"
+                            android:textSize="@dimen/cm_sp_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/cm_dp_2"
+                            android:text="@string/settings_language_desc"
+                            android:textColor="@color/xizhou_on_surface_variant"
+                            android:textSize="@dimen/cm_sp_12" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/cm_dp_1"
+                    android:background="@color/xizhou_divider" />
+
+                <LinearLayout
+                    android:id="@+id/layoutLanguageSystem"
+                    style="@style/SettingsLanguageRow">
+
+                    <RadioButton
+                        android:id="@+id/rbLanguageSystem"
+                        style="@style/SettingsLanguageRadio" />
+
+                    <LinearLayout
+                        style="@style/SettingsLanguageTextGroup">
+
+                        <TextView
+                            style="@style/SettingsLanguageTitle"
+                            android:text="@string/language_system" />
+
+                        <TextView
+                            style="@style/SettingsLanguageSubtitle"
+                            android:text="@string/language_system_desc" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutLanguageEnglish"
+                    style="@style/SettingsLanguageRow">
+
+                    <RadioButton
+                        android:id="@+id/rbLanguageEnglish"
+                        style="@style/SettingsLanguageRadio" />
+
+                    <LinearLayout
+                        style="@style/SettingsLanguageTextGroup">
+
+                        <TextView
+                            style="@style/SettingsLanguageTitle"
+                            android:text="@string/language_english" />
+
+                        <TextView
+                            style="@style/SettingsLanguageSubtitle"
+                            android:text="English" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/layoutLanguageChinese"
+                    style="@style/SettingsLanguageRow">
+
+                    <RadioButton
+                        android:id="@+id/rbLanguageChinese"
+                        style="@style/SettingsLanguageRadio" />
+
+                    <LinearLayout
+                        style="@style/SettingsLanguageTextGroup">
+
+                        <TextView
+                            style="@style/SettingsLanguageTitle"
+                            android:text="@string/language_chinese" />
+
+                        <TextView
+                            style="@style/SettingsLanguageSubtitle"
+                            android:text="@string/language_chinese_native" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/cm_dp_18"
+            app:cardBackgroundColor="@color/xizhou_surface"
+            app:cardCornerRadius="@dimen/cm_dp_8"
+            app:cardElevation="@dimen/cm_dp_1"
+            app:strokeColor="@color/xizhou_border"
+            app:strokeWidth="@dimen/cm_dp_1">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="@dimen/cm_dp_18">
+
+                <ImageView
+                    android:layout_width="@dimen/cm_dp_36"
+                    android:layout_height="@dimen/cm_dp_36"
+                    android:background="@drawable/bg_setting_icon_secondary"
+                    android:padding="@dimen/cm_dp_8"
+                    android:src="@drawable/ic_info" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/cm_dp_12"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="@string/settings_about"
+                        android:textColor="@color/xizhou_on_surface"
+                        android:textSize="@dimen/cm_sp_16"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/cm_dp_3"
+                        android:text="@string/settings_about_desc"
+                        android:textColor="@color/xizhou_on_surface_variant"
+                        android:textSize="@dimen/cm_sp_12" />
+                </LinearLayout>
+            </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

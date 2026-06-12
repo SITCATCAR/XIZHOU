@@ -1,11 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- XIZHOU 通用按钮样式 -->
     <style name="XIZHOUButton" parent="Widget.AppCompat.Button">
         <item name="android:textColor">@color/xizhou_on_primary</item>
         <item name="android:background">@drawable/bg_button_gradient</item>
         <item name="android:textSize">17sp</item>
         <item name="android:textAllCaps">false</item>
         <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+
+    <style name="SettingsLanguageRow">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:orientation">horizontal</item>
+        <item name="android:paddingStart">@dimen/cm_dp_18</item>
+        <item name="android:paddingTop">@dimen/cm_dp_13</item>
+        <item name="android:paddingEnd">@dimen/cm_dp_18</item>
+        <item name="android:paddingBottom">@dimen/cm_dp_13</item>
+        <item name="android:background">?attr/selectableItemBackground</item>
+    </style>
+
+    <style name="SettingsLanguageRadio" parent="Widget.AppCompat.CompoundButton.RadioButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:buttonTint">@color/xizhou_primary</item>
+        <item name="android:clickable">false</item>
+    </style>
+
+    <style name="SettingsLanguageTextGroup">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/cm_dp_12</item>
+        <item name="android:layout_weight">1</item>
+        <item name="android:orientation">vertical</item>
+    </style>
+
+    <style name="SettingsLanguageTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/xizhou_on_surface</item>
+        <item name="android:textSize">@dimen/cm_sp_15</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="SettingsLanguageSubtitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/cm_dp_2</item>
+        <item name="android:textColor">@color/xizhou_on_surface_variant</item>
+        <item name="android:textSize">@dimen/cm_sp_12</item>
     </style>
 </resources>

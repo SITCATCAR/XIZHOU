@@ -7,10 +7,10 @@
     <string name="create">创建</string>
     <string name="url">URL</string>
     <string name="video_id">视频 ID</string>
-    <string name="channel_url">频道 链接</string>
+    <string name="channel_url">频道链接</string>
     <string name="hint_youtube_url">请输入 YouTube 链接</string>
     <string name="hint_youtube_video_id">请输入 YouTube 视频 ID</string>
-    <string name="hint_youtube_channel_url">请输入 YouTube 频道 链接</string>
+    <string name="hint_youtube_channel_url">请输入 YouTube 频道链接</string>
     <string name="generate_qr_code">生成二维码</string>
     <string name="save">保存</string>
     <string name="share">分享</string>
@@ -28,16 +28,16 @@
     <string name="cancel">取消</string>
     <string name="title_updated">标题已更新</string>
     <string name="title_empty_error">标题不能为空</string>
-    <string name="has_no_data">没有历史记录</string>
+    <string name="has_no_data">这里还没有内容~</string>
 
     <!-- History Selection and Delete -->
     <string name="select_mode">选择</string>
     <string name="exit_selection">退出</string>
     <string name="select_all">全选</string>
     <string name="delete">删除</string>
-    <string name="delete_confirm">确认删除</string>
-    <string name="delete_confirm_message">确定要删除 %d 条记录吗？</string>
-    <string name="delete_completed">已删除 %d 条记录</string>
+    <string name="delete_confirm">删除确认</string>
+    <string name="delete_confirm_message">确定要删除 %d 项吗？</string>
+    <string name="delete_completed">已删除 %d 项</string>
     <string name="selection_title">选择项目</string>
     <string name="selected_count">已选择 %d 项</string>
     <string name="history">历史记录</string>
@@ -82,7 +82,7 @@
     <!-- Save to Gallery -->
     <string name="saved_to_gallery">已保存到相册</string>
     <string name="save_failed">保存失败：%s</string>
-    <string name="qr_code_not_found">二维码未找到</string>
+    <string name="qr_code_not_found">未找到二维码</string>
     <string name="permission_denied">权限被拒绝</string>
 
     <!-- Scan Result -->
@@ -119,4 +119,20 @@
     <string name="create_type_x">X</string>
     <string name="create_type_youtube">YouTube</string>
     <string name="create_type_calendar">日历</string>
+
+    <!-- Settings -->
+    <string name="settings_title">设置</string>
+    <string name="settings_subtitle">按照你的使用习惯调整 XIZHOU。</string>
+    <string name="settings_brand_mark">X</string>
+    <string name="settings_section_preferences">偏好设置</string>
+    <string name="settings_language">语言</string>
+    <string name="settings_language_desc">选择应用的显示语言。</string>
+    <string name="settings_current_language">当前语言：%s</string>
+    <string name="language_system">跟随系统</string>
+    <string name="language_system_desc">自动使用手机系统语言</string>
+    <string name="language_english">英文</string>
+    <string name="language_chinese">简体中文</string>
+    <string name="language_chinese_native">简体中文</string>
+    <string name="settings_about">关于 XIZHOU</string>
+    <string name="settings_about_desc">二维码扫描与创建练习项目</string>
 </resources>

@@ -119,4 +119,20 @@
     <string name="create_type_x">X</string>
     <string name="create_type_youtube">YouTube</string>
     <string name="create_type_calendar">Calendar</string>
+
+    <!-- Settings -->
+    <string name="settings_title">Settings</string>
+    <string name="settings_subtitle">Tune XIZHOU to your preferred way of working.</string>
+    <string name="settings_brand_mark">X</string>
+    <string name="settings_section_preferences">Preferences</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_desc">Choose the display language for the app.</string>
+    <string name="settings_current_language">Current language: %s</string>
+    <string name="language_system">Follow system</string>
+    <string name="language_system_desc">Use your phone language automatically</string>
+    <string name="language_english">English</string>
+    <string name="language_chinese">Simplified Chinese</string>
+    <string name="language_chinese_native">Simplified Chinese</string>
+    <string name="settings_about">About XIZHOU</string>
+    <string name="settings_about_desc">QR code scanning and creation practice project</string>
 </resources>
