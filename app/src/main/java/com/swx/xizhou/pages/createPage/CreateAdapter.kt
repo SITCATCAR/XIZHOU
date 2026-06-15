@@ -14,37 +14,20 @@ class CreateAdapter(
     val context: FragmentActivity?,
     val itemList: List<CreateItem>,
     val onCreateItemClickEvent: Event<CreateItemClickEvent>
-): RecyclerView.Adapter<CreateAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<CreateAdapter.ViewHolder>() {
 
-
-    override fun onCreateViewHolder(
-        p0: ViewGroup,
-        p1: Int
-    ): ViewHolder {
-        val view = LayoutInflater.from(context).inflate(R.layout.create_rcv_item, p0, false)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
+        val view = LayoutInflater.from(context).inflate(R.layout.create_rcv_item, parent, false)
         return ViewHolder(view)
     }
 
-    override fun onBindViewHolder(
-        viewHolder: ViewHolder,
-        position: Int
-    ) {
+    override fun onBindViewHolder(viewHolder: ViewHolder, position: Int) {
         val createItem = itemList[position]
-        viewHolder.itemName.text=createItem.name
-        when(createItem.type){
-            CreateItemType.X->
-                viewHolder.itemImage.setImageResource(R.drawable.vector_ic_x)
-
-            CreateItemType.Youtube->
-                viewHolder.itemImage.setImageResource(R.drawable.vector_ic_youtube)
-
-            CreateItemType.Calender->
-                viewHolder.itemImage.setImageResource(R.drawable.vector_ic_calendar)
-        }
-
+        val definition = CreateTypes.getByCreateType(createItem.type)
+        viewHolder.itemName.text = createItem.name
+        viewHolder.itemImage.setImageResource(definition.iconRes)
         viewHolder.itemView.setOnClickListener {
-            //onclicklistener.onCreateItemClick(position,createItem)
-            //触发点击事件
+            // 触发点击事件
             onCreateItemClickEvent.invoke(CreateItemClickEvent(position, createItem))
         }
     }
@@ -53,9 +36,8 @@ class CreateAdapter(
         return itemList.size
     }
 
-
-    inner class ViewHolder(view: View): RecyclerView.ViewHolder(view){
-        val itemName: TextView=view.findViewById(R.id.createName)
-        val itemImage: AppCompatImageView=view.findViewById(R.id.createImg)
+    inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val itemName: TextView = view.findViewById(R.id.createName)
+        val itemImage: AppCompatImageView = view.findViewById(R.id.createImg)
     }
 }

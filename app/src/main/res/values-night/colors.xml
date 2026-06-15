@@ -9,11 +9,15 @@
     <color name="xizhou_background">#111827</color>
     <color name="xizhou_surface">#1F2937</color>
     <color name="xizhou_surface_variant">#374151</color>
+    <color name="xizhou_surface_elevated">#273345</color>
+    <color name="xizhou_create_panel_start">#0F2F2A</color>
+    <color name="xizhou_create_panel_end">#1F2937</color>
 
     <!-- 暗色文字 -->
     <color name="xizhou_on_primary">#FFFFFF</color>
     <color name="xizhou_on_surface">#F9FAFB</color>
     <color name="xizhou_on_surface_variant">#D1D5DB</color>
+    <color name="xizhou_on_surface_soft">#CBD5E1</color>
 
     <!-- 暗色边框 -->
     <color name="xizhou_border">#374151</color>

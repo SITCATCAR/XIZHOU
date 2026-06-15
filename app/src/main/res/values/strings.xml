@@ -2,6 +2,9 @@
     <string name="app_name">XIZHOU</string>
     <!--Create Fragment-->
     <string name="create_title">Create</string>
+    <string name="create_subtitle">Choose a QR template</string>
+    <string name="create_lens_title">Ready to generate</string>
+    <string name="create_lens_subtitle">Pick a type and turn it into a shareable code.</string>
 
     <!-- YouTube Create Activity -->
     <string name="create">Create</string>
@@ -20,6 +23,10 @@
     <!-- X Create Activity -->
     <string name="hint_x_url">Enter X URL</string>
     <string name="hint_x_username">Enter X Username</string>
+
+    <!-- Facebook Create Activity -->
+    <string name="hint_facebook_url">Enter Facebook URL</string>
+    <string name="hint_facebook_username">Enter Facebook Username</string>
 
     <!-- History Edit -->
     <string name="edit_title">Edit Title</string>
@@ -77,6 +84,7 @@
     <string name="type_calendar">Calendar</string>
     <string name="type_text">Text</string>
     <string name="type_x">X</string>
+    <string name="type_facebook">Facebook</string>
     <string name="content_label">Content</string>
 
     <!-- Save to Gallery -->
@@ -91,6 +99,7 @@
     <string name="result_calendar">Calendar Event</string>
     <string name="result_text">Text</string>
     <string name="result_x">X</string>
+    <string name="result_facebook">Facebook</string>
     <string name="open">Open</string>
     <string name="add_to_calendar">Add to Calendar</string>
 
@@ -118,6 +127,7 @@
     <!-- Create Types -->
     <string name="create_type_x">X</string>
     <string name="create_type_youtube">YouTube</string>
+    <string name="create_type_facebook">Facebook</string>
     <string name="create_type_calendar">Calendar</string>
 
     <!-- Settings -->

@@ -1,63 +1,38 @@
 package com.swx.xizhou.activity
 
-import android.content.Intent
-import android.graphics.Bitmap
-import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.swx.xizhou.BaseActivity
 import com.swx.xizhou.R
-import com.swx.xizhou.database.HistoryDBHelper
-import com.swx.xizhou.database.HistoryItemDTO
-import com.swx.xizhou.database.HistoryMapper
 import com.swx.xizhou.database.HistoryType
 import com.swx.xizhou.databinding.ActivityYoutubeCreateBinding
 import com.swx.xizhou.model.YoutubeType
 import com.swx.xizhou.model.YoutubeQRModel
-import com.swx.xizhou.pages.historyPage.HistoryPagerFragment
-import com.swx.xizhou.util.ImageSaver
-import com.swx.xizhou.util.PermissionHelper
-import com.swx.xizhou.util.QRCodeGenerator
 
-class YoutubeCreateActivity : BaseActivity<ActivityYoutubeCreateBinding>(
+class YoutubeCreateActivity : BaseQRCodeCreateActivity<ActivityYoutubeCreateBinding>(
     ActivityYoutubeCreateBinding::inflate
 ) {
 
     private val model = YoutubeQRModel()
-    private lateinit var historyMapper: HistoryMapper
-    private var currentQRBitmap: Bitmap? = null
+    override val historyType = HistoryType.YOUTUBE
 
     override fun initView() {
         setupToolbar()
         updateHint()
+        updateModeSelectionUI()
         binding.btnSave.visibility = View.GONE
         binding.btnShare.visibility = View.GONE
-    }
-
-    override fun initData() {
-        historyMapper = HistoryMapper(this)
-        PermissionHelper.onPermissionResult += ::onPermissionResult
     }
 
     override fun initAction() {
         setupModeSelection()
         binding.btnGenerate.setOnClickListener {
             generateQRCode()
-            val dto = HistoryItemDTO(model.getQRContent(),
-                HistoryType.YOUTUBE, model.getID(), System.currentTimeMillis())
-            historyMapper.insert(dto, HistoryDBHelper.C_TABLE_NAME)
-            HistoryPagerFragment.onItemChangeEvent.invoke(Unit)
-            Toast.makeText(this, getString(R.string.toast_insert_success), Toast.LENGTH_SHORT).show()
         }
         binding.btnSave.setOnClickListener {
             currentQRBitmap?.let { saveQRCodeToGallery(it) }
         }
         binding.btnShare.setOnClickListener {
-            currentQRBitmap?.let { bitmap ->
-                val shareIntent = ImageSaver.getShareIntent(this, bitmap) ?: return@let
-                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
-            }
+            shareQRCode()
         }
     }
 
@@ -121,45 +96,12 @@ class YoutubeCreateActivity : BaseActivity<ActivityYoutubeCreateBinding>(
         }
 
         model.input = input
-        currentQRBitmap = QRCodeGenerator.generateQRCode(model.getQRContent())
-        if (currentQRBitmap != null) {
-            binding.ivQRCode.setImageBitmap(currentQRBitmap)
-            binding.btnSave.visibility = View.VISIBLE
-            binding.btnShare.visibility = View.VISIBLE
-        }
-    }
-
-    private fun saveQRCodeToGallery(bitmap: Bitmap) {
-        when (val result = ImageSaver.saveToGallery(this, bitmap)) {
-            is ImageSaver.SaveResult.Success -> {
-                Toast.makeText(this, getString(R.string.saved_to_gallery), Toast.LENGTH_SHORT).show()
-            }
-            is ImageSaver.SaveResult.PermissionRequired -> {
-                PermissionHelper.request(this, PermissionHelper.PermissionType.STORAGE)
-            }
-            is ImageSaver.SaveResult.Error -> {
-                Toast.makeText(this, getString(R.string.save_failed, result.message), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun onPermissionResult(result: PermissionHelper.PermissionResult) {
-        if (result.type == PermissionHelper.PermissionType.STORAGE && result.granted) {
-            currentQRBitmap?.let { saveQRCodeToGallery(it) }
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        PermissionHelper.handleResult(requestCode, grantResults)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        PermissionHelper.onPermissionResult -= ::onPermissionResult
+        generateQRCode(
+            content = model.getQRContent(),
+            title = model.getID(),
+            qrImageView = binding.ivQRCode,
+            saveButton = binding.btnSave,
+            shareButton = binding.btnShare
+        )
     }
 }

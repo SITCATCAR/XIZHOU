@@ -8,7 +8,7 @@ import com.swx.xizhou.util.LanguageManager
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>(SettingsFragmentBinding::inflate) {
 
     override fun initView() {
-        enableInsetsView(binding.settingsRoot, top = true, bottom = false)
+        enableInsetsView(binding.toolbar, top = true, bottom = false)
         updateLanguageView()
 
         binding.layoutLanguageSystem.setOnClickListener {

@@ -2,6 +2,7 @@ package com.swx.xizhou.database
 enum class HistoryType{
     X,
     YOUTUBE,
+    FACEBOOK,
     CALENDAR,
     TEXT
 }

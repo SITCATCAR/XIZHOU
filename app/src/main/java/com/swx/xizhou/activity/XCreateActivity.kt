@@ -1,75 +1,48 @@
 package com.swx.xizhou.activity
 
-import android.content.Intent
-import android.graphics.Bitmap
 import android.view.View
-import android.widget.Toast
 import androidx.core.content.ContextCompat
-import com.swx.xizhou.BaseActivity
 import com.swx.xizhou.R
-import com.swx.xizhou.database.HistoryDBHelper
-import com.swx.xizhou.database.HistoryItemDTO
-import com.swx.xizhou.database.HistoryMapper
 import com.swx.xizhou.database.HistoryType
 import com.swx.xizhou.databinding.ActivityXcreateBinding
 import com.swx.xizhou.model.XQRModel
 import com.swx.xizhou.model.XType
-import com.swx.xizhou.pages.historyPage.HistoryPagerFragment
-import com.swx.xizhou.util.ImageSaver
-import com.swx.xizhou.util.PermissionHelper
-import com.swx.xizhou.util.QRCodeGenerator
 
-class XCreateActivity : BaseActivity<ActivityXcreateBinding>(ActivityXcreateBinding::inflate) {
+class XCreateActivity : BaseQRCodeCreateActivity<ActivityXcreateBinding>(ActivityXcreateBinding::inflate) {
 
     private val model = XQRModel()
-    private lateinit var historyMapper: HistoryMapper
-    private var currentQRBitmap: Bitmap? = null
+    override val historyType = HistoryType.X
 
     override fun initView() {
         binding.ivBack.setOnClickListener { finish() }
         updateHint()
+        updateModeSelectionUI()
         binding.btnSave.visibility = View.GONE
         binding.btnShare.visibility = View.GONE
-    }
-
-    override fun initData() {
-        historyMapper = HistoryMapper(this)
-        PermissionHelper.onPermissionResult += ::onPermissionResult
     }
 
     override fun initAction() {
         setUpModeSelection()
         binding.btnGenerate.setOnClickListener {
             generateQRCode()
-            val dto = HistoryItemDTO(
-                model.getQRContent(),
-                HistoryType.X, model.getID(),
-                System.currentTimeMillis()
-            )
-            historyMapper.insert(dto, HistoryDBHelper.C_TABLE_NAME)
-            HistoryPagerFragment.onItemChangeEvent.invoke(Unit)
-            Toast.makeText(this, getString(R.string.toast_insert_success), Toast.LENGTH_SHORT).show()
         }
         binding.btnSave.setOnClickListener {
             currentQRBitmap?.let { saveQRCodeToGallery(it) }
         }
         binding.btnShare.setOnClickListener {
-            currentQRBitmap?.let { bitmap ->
-                val shareIntent = ImageSaver.getShareIntent(this, bitmap) ?: return@let
-                startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
-            }
+            shareQRCode()
         }
     }
 
-    private fun updateHint(){
-        var hint=when(model.type){
+    private fun updateHint() {
+        val hint = when (model.type) {
             XType.URL -> getString(R.string.hint_x_url)
             XType.USERNAME -> getString(R.string.hint_x_username)
         }
-        binding.etInput.hint=hint
+        binding.etInput.hint = hint
     }
 
-    private fun updateModeSelectionUI(){
+    private fun updateModeSelectionUI() {
         binding.tvUrl.background = null
         binding.tvUsername.background = null
         binding.tvUrl.setTextColor(ContextCompat.getColor(this, android.R.color.black))
@@ -90,13 +63,13 @@ class XCreateActivity : BaseActivity<ActivityXcreateBinding>(ActivityXcreateBind
         }
     }
 
-    private fun selectMode(type: XType){
-        model.type= type
+    private fun selectMode(type: XType) {
+        model.type = type
         updateHint()
         updateModeSelectionUI()
     }
 
-    private fun setUpModeSelection(){
+    private fun setUpModeSelection() {
         binding.tvUrl.setOnClickListener { selectMode(XType.URL) }
         binding.tvUsername.setOnClickListener { selectMode(XType.USERNAME) }
     }
@@ -108,45 +81,12 @@ class XCreateActivity : BaseActivity<ActivityXcreateBinding>(ActivityXcreateBind
             return
         }
         model.input = input
-        currentQRBitmap = QRCodeGenerator.generateQRCode(model.getQRContent())
-        if (currentQRBitmap != null) {
-            binding.ivQRCode.setImageBitmap(currentQRBitmap)
-            binding.btnSave.visibility = View.VISIBLE
-            binding.btnShare.visibility = View.VISIBLE
-        }
-    }
-
-    private fun saveQRCodeToGallery(bitmap: Bitmap) {
-        when (val result = ImageSaver.saveToGallery(this, bitmap)) {
-            is ImageSaver.SaveResult.Success -> {
-                Toast.makeText(this, getString(R.string.saved_to_gallery), Toast.LENGTH_SHORT).show()
-            }
-            is ImageSaver.SaveResult.PermissionRequired -> {
-                PermissionHelper.request(this, PermissionHelper.PermissionType.STORAGE)
-            }
-            is ImageSaver.SaveResult.Error -> {
-                Toast.makeText(this, getString(R.string.save_failed, result.message), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun onPermissionResult(result: PermissionHelper.PermissionResult) {
-        if (result.type == PermissionHelper.PermissionType.STORAGE && result.granted) {
-            currentQRBitmap?.let { saveQRCodeToGallery(it) }
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        PermissionHelper.handleResult(requestCode, grantResults)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        PermissionHelper.onPermissionResult -= ::onPermissionResult
+        generateQRCode(
+            content = model.getQRContent(),
+            title = model.getID(),
+            qrImageView = binding.ivQRCode,
+            saveButton = binding.btnSave,
+            shareButton = binding.btnShare
+        )
     }
 }

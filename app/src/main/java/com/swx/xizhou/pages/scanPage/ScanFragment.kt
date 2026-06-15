@@ -23,6 +23,7 @@ import com.swx.xizhou.database.HistoryMapper
 import com.swx.xizhou.database.HistoryType
 import com.swx.xizhou.databinding.ScanFragmentBinding
 import com.swx.xizhou.model.CalendarQRModel
+import com.swx.xizhou.model.FacebookQRModel
 import com.swx.xizhou.model.XQRModel
 import com.swx.xizhou.model.YoutubeQRModel
 import com.swx.xizhou.activity.ScanResultActivity
@@ -200,6 +201,7 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
                 when {
                     YoutubeQRModel.isYoutubeLink(value) -> ScanResultActivity.TYPE_YOUTUBE
                     XQRModel.isXLink(value) -> ScanResultActivity.TYPE_X
+                    FacebookQRModel.isFacebookLink(value) -> ScanResultActivity.TYPE_FACEBOOK
                     else -> ScanResultActivity.TYPE_TEXT
                 }
             }
@@ -239,6 +241,15 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
                 model.input = value
                 val dto = HistoryItemDTO(
                     value, HistoryType.X, model.getID(),
+                    System.currentTimeMillis()
+                )
+                historyMapper.insert(dto, HistoryDBHelper.S_TABLE_NAME)
+            }
+            ScanResultActivity.TYPE_FACEBOOK -> {
+                val model = FacebookQRModel()
+                model.input = value
+                val dto = HistoryItemDTO(
+                    value, HistoryType.FACEBOOK, model.getID(),
                     System.currentTimeMillis()
                 )
                 historyMapper.insert(dto, HistoryDBHelper.S_TABLE_NAME)

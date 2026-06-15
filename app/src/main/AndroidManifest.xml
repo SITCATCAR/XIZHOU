@@ -22,6 +22,9 @@
             android:name=".activity.XCreateActivity"
             android:exported="false" />
         <activity
+            android:name=".activity.FacebookCreateActivity"
+            android:exported="false" />
+        <activity
             android:name=".activity.CalenderCreateActivity"
             android:exported="false" />
         <activity

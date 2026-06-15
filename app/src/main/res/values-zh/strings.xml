@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">XIZHOU</string>
+
     <!--Create Fragment-->
     <string name="create_title">创建</string>
+    <string name="create_subtitle">选择二维码模板</string>
+    <string name="create_lens_title">准备生成</string>
+    <string name="create_lens_subtitle">选择类型，生成可分享的二维码。</string>
 
     <!-- YouTube Create Activity -->
     <string name="create">创建</string>
@@ -20,6 +24,10 @@
     <!-- X Create Activity -->
     <string name="hint_x_url">请输入 X 链接</string>
     <string name="hint_x_username">请输入 X 用户名</string>
+
+    <!-- Facebook Create Activity -->
+    <string name="hint_facebook_url">请输入 Facebook 链接</string>
+    <string name="hint_facebook_username">请输入 Facebook 用户名</string>
 
     <!-- History Edit -->
     <string name="edit_title">编辑标题</string>
@@ -77,6 +85,7 @@
     <string name="type_calendar">日历</string>
     <string name="type_text">文本</string>
     <string name="type_x">X</string>
+    <string name="type_facebook">Facebook</string>
     <string name="content_label">内容</string>
 
     <!-- Save to Gallery -->
@@ -91,6 +100,7 @@
     <string name="result_calendar">日历事件</string>
     <string name="result_text">文本</string>
     <string name="result_x">X</string>
+    <string name="result_facebook">Facebook</string>
     <string name="open">打开</string>
     <string name="add_to_calendar">添加到日历</string>
 
@@ -118,6 +128,7 @@
     <!-- Create Types -->
     <string name="create_type_x">X</string>
     <string name="create_type_youtube">YouTube</string>
+    <string name="create_type_facebook">Facebook</string>
     <string name="create_type_calendar">日历</string>
 
     <!-- Settings -->

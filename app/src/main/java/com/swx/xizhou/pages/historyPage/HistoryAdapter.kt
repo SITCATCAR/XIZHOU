@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.swx.xizhou.R
 import com.swx.xizhou.database.HistoryItemVO
 import com.swx.xizhou.database.HistoryType
+import com.swx.xizhou.pages.createPage.CreateTypes
 import com.swx.xizhou.pages.historyPage.statemachine.HistorySelectionState
 
 class HistoryAdapter(
@@ -39,12 +40,7 @@ class HistoryAdapter(
     override fun getItemCount(): Int = list.size
 
     private fun setFormatIcon(ivLeft: AppCompatImageView, type: HistoryType) {
-        val iconRes = when (type) {
-            HistoryType.YOUTUBE -> R.drawable.vector_ic_youtube
-            HistoryType.CALENDAR -> R.drawable.vector_ic_calendar
-            HistoryType.X->R.drawable.vector_ic_x
-            else -> R.drawable.parse_format_icon_text
-        }
+        val iconRes = CreateTypes.getByHistoryType(type)?.iconRes ?: R.drawable.parse_format_icon_text
         ivLeft.setImageResource(iconRes)
     }
 

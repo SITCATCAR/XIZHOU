@@ -13,6 +13,7 @@ import com.swx.xizhou.database.HistoryMapper
 import com.swx.xizhou.database.HistoryType
 import com.swx.xizhou.databinding.ActivityHistoryDisplayBinding
 import com.swx.xizhou.model.CalendarQRModel
+import com.swx.xizhou.pages.createPage.CreateTypes
 import com.swx.xizhou.util.ImageSaver
 import com.swx.xizhou.util.PermissionHelper
 import com.swx.xizhou.util.QRCodeGenerator
@@ -68,12 +69,9 @@ class HistoryDisplayActivity : BaseActivity<ActivityHistoryDisplayBinding>(
     }
 
     private fun setFormatIcon(format: HistoryType) {
-        val (iconRes, textRes) = when (format) {
-            HistoryType.YOUTUBE -> R.drawable.vector_ic_youtube to R.string.type_youtube
-            HistoryType.CALENDAR -> R.drawable.vector_ic_calendar to R.string.type_calendar
-            HistoryType.X -> R.drawable.vector_ic_x to R.string.type_x
-            HistoryType.TEXT -> R.drawable.vector_ic_result_text to R.string.type_text
-        }
+        val definition = CreateTypes.getByHistoryType(format)
+        val iconRes = definition?.iconRes ?: R.drawable.vector_ic_result_text
+        val textRes = definition?.nameRes ?: R.string.type_text
         binding.ivTypeIcon.setImageResource(iconRes)
         binding.tvType.setText(textRes)
     }
@@ -118,6 +116,11 @@ class HistoryDisplayActivity : BaseActivity<ActivityHistoryDisplayBinding>(
             }
 
             HistoryType.X->{
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem?.content))
+                startActivity(intent)
+            }
+
+            HistoryType.FACEBOOK->{
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(currentItem?.content))
                 startActivity(intent)
             }

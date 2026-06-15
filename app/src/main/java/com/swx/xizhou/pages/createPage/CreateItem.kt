@@ -2,9 +2,9 @@ package com.swx.xizhou.pages.createPage
 
 enum class CreateItemType{
     X,
-    Youtube,
-    Calender
+    YOUTUBE,
+    FACEBOOK,
+    CALENDAR
 }
 
-class CreateItem(val name: String,val type: CreateItemType) {
-}
+data class CreateItem(val name: String, val type: CreateItemType)

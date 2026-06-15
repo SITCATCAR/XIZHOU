@@ -1,39 +1,26 @@
 package com.swx.xizhou.activity
 
-import android.content.Intent
-import android.graphics.Bitmap
 import android.os.Build
-import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import com.google.android.material.datepicker.MaterialDatePicker
 import com.google.android.material.timepicker.MaterialTimePicker
-import com.swx.xizhou.BaseActivity
 import com.swx.xizhou.R
-import com.swx.xizhou.database.HistoryDBHelper
-import com.swx.xizhou.database.HistoryItemDTO
-import com.swx.xizhou.database.HistoryMapper
 import com.swx.xizhou.database.HistoryType
 import com.swx.xizhou.databinding.ActivityCalenderCreateBinding
 import com.swx.xizhou.model.CalendarQRModel
-import com.swx.xizhou.pages.historyPage.HistoryPagerFragment
-import com.swx.xizhou.util.ImageSaver
-import com.swx.xizhou.util.PermissionHelper
-import com.swx.xizhou.util.QRCodeGenerator
 import java.time.Instant
-import java.time.LocalDateTime
 import java.time.ZoneId
 import java.time.format.DateTimeFormatter
 
-class CalenderCreateActivity : BaseActivity<ActivityCalenderCreateBinding>(
+class CalenderCreateActivity : BaseQRCodeCreateActivity<ActivityCalenderCreateBinding>(
     ActivityCalenderCreateBinding::inflate
 ) {
 
     @RequiresApi(Build.VERSION_CODES.O)
     private val model = CalendarQRModel()
-    private lateinit var historyMapper: HistoryMapper
-    private var currentQRBitmap: Bitmap? = null
+    override val historyType = HistoryType.CALENDAR
 
     private val dateFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd")
     private val timeFormatter = DateTimeFormatter.ofPattern("HH:mm")
@@ -50,12 +37,6 @@ class CalenderCreateActivity : BaseActivity<ActivityCalenderCreateBinding>(
             model.isAllDay = isChecked
             updateTimeVisibility(isChecked)
         }
-    }
-
-    override fun initData() {
-        historyMapper = HistoryMapper(this)
-
-        PermissionHelper.onPermissionResult += ::onPermissionResult
     }
 
     override fun initAction() {
@@ -172,69 +153,13 @@ class CalenderCreateActivity : BaseActivity<ActivityCalenderCreateBinding>(
             return
         }
 
-        val content = model.getQRContent()
-        currentQRBitmap = QRCodeGenerator.generateQRCode(content)
-
-        if (currentQRBitmap != null) {
-            binding.ivQRCode.setImageBitmap(currentQRBitmap)
-            binding.btnSave.visibility = View.VISIBLE
-            binding.btnShare.visibility = View.VISIBLE
-            Toast.makeText(this, R.string.calendar_generated, Toast.LENGTH_SHORT).show()
-            saveToHistory()
-        } else {
-            Toast.makeText(this, getString(R.string.error_generation_failed), Toast.LENGTH_SHORT).show()
-        }
-    }
-
-    private fun saveToHistory() {
-        val dto = HistoryItemDTO(
+        generateQRCode(
             content = model.getQRContent(),
-            format = HistoryType.CALENDAR,
             title = model.getID(),
-            timestamp = System.currentTimeMillis()
+            qrImageView = binding.ivQRCode,
+            saveButton = binding.btnSave,
+            shareButton = binding.btnShare,
+            successMessage = R.string.calendar_generated
         )
-        historyMapper.insert(dto, HistoryDBHelper.C_TABLE_NAME)
-        HistoryPagerFragment.onItemChangeEvent.invoke(Unit)
-    }
-
-    private fun shareQRCode() {
-        currentQRBitmap?.let { bitmap ->
-            val shareIntent = ImageSaver.getShareIntent(this, bitmap) ?: return
-            startActivity(Intent.createChooser(shareIntent, getString(R.string.share)))
-        }
-    }
-
-    private fun saveQRCodeToGallery(bitmap: Bitmap) {
-        when (val result = ImageSaver.saveToGallery(this, bitmap)) {
-            is ImageSaver.SaveResult.Success -> {
-                Toast.makeText(this, getString(R.string.saved_to_gallery), Toast.LENGTH_SHORT).show()
-            }
-            is ImageSaver.SaveResult.PermissionRequired -> {
-                PermissionHelper.request(this, PermissionHelper.PermissionType.STORAGE)
-            }
-            is ImageSaver.SaveResult.Error -> {
-                Toast.makeText(this, getString(R.string.save_failed, result.message), Toast.LENGTH_SHORT).show()
-            }
-        }
-    }
-
-    private fun onPermissionResult(result: PermissionHelper.PermissionResult) {
-        if (result.type == PermissionHelper.PermissionType.STORAGE && result.granted) {
-            currentQRBitmap?.let { saveQRCodeToGallery(it) }
-        }
-    }
-
-    override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
-    ) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        PermissionHelper.handleResult(requestCode, grantResults)
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        PermissionHelper.onPermissionResult -= ::onPermissionResult
     }
 }

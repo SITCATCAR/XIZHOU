@@ -11,6 +11,7 @@ import com.swx.xizhou.BaseActivity
 import com.swx.xizhou.R
 import com.swx.xizhou.databinding.ActivityScanResultBinding
 import com.swx.xizhou.model.CalendarQRModel
+import com.swx.xizhou.model.FacebookQRModel
 import com.swx.xizhou.model.XQRModel
 import com.swx.xizhou.model.YoutubeQRModel
 
@@ -37,6 +38,7 @@ class ScanResultActivity : BaseActivity<ActivityScanResultBinding>(
             when (scanType) {
                 TYPE_YOUTUBE -> openYoutube()
                 TYPE_X -> openX()
+                TYPE_FACEBOOK -> openFacebook()
                 TYPE_CALENDAR -> addToCalendar()
                 TYPE_TEXT -> openAsText()
                 else -> shareContent()
@@ -67,6 +69,12 @@ class ScanResultActivity : BaseActivity<ActivityScanResultBinding>(
                 binding.ivTypeIcon.setImageResource(R.drawable.vector_ic_x)
                 binding.tvTypeLabel.setText(R.string.result_x)
                 binding.tvTitle.text = XQRModel().apply { input = scanResult }.getID()
+                binding.btnPrimary.setText(R.string.open)
+            }
+            TYPE_FACEBOOK -> {
+                binding.ivTypeIcon.setImageResource(R.drawable.vector_ic_facebook)
+                binding.tvTypeLabel.setText(R.string.result_facebook)
+                binding.tvTitle.text = FacebookQRModel().apply { input = scanResult }.getID()
                 binding.btnPrimary.setText(R.string.open)
             }
             TYPE_CALENDAR -> {
@@ -142,6 +150,11 @@ class ScanResultActivity : BaseActivity<ActivityScanResultBinding>(
         startActivity(intent)
     }
 
+    private fun openFacebook() {
+        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(scanResult))
+        startActivity(intent)
+    }
+
     private fun shareContent() {
         val intent = Intent(Intent.ACTION_SEND).apply {
             type = "text/plain"
@@ -158,5 +171,6 @@ class ScanResultActivity : BaseActivity<ActivityScanResultBinding>(
         const val TYPE_CALENDAR = 2
         const val TYPE_TEXT = 3
         const val TYPE_X = 4
+        const val TYPE_FACEBOOK = 5
     }
 }
