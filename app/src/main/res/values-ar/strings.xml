@@ -120,6 +120,9 @@
     <string name="settings_subtitle">اضبط XIZHOU بالطريقة التي تناسبك.</string>
     <string name="settings_brand_mark">X</string>
     <string name="settings_section_preferences">التفضيلات</string>
+    <string name="settings_beep">صوت عند المسح</string>
+    <string name="settings_beep_enabled">تشغيل صوت عند نجاح المسح</string>
+    <string name="settings_beep_disabled">تم كتم صوت المسح</string>
     <string name="settings_language">اللغة</string>
     <string name="settings_language_desc">اختر لغة عرض التطبيق.</string>
     <string name="settings_current_language">اللغة الحالية: %s</string>

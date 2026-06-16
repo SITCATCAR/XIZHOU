@@ -2,21 +2,43 @@ package com.swx.xizhou.pages.settingPage
 
 import com.swx.xizhou.BaseFragment
 import com.swx.xizhou.MainActivity
+import com.swx.xizhou.R
 import com.swx.xizhou.databinding.ItemLanguageOptionBinding
 import com.swx.xizhou.databinding.SettingsFragmentBinding
 import com.swx.xizhou.util.LanguageManager
 import com.swx.xizhou.util.LanguageOption
+import com.swx.xizhou.util.SPUtil
 
 class SettingsFragment : BaseFragment<SettingsFragmentBinding>(SettingsFragmentBinding::inflate) {
     private val languageOptionViews = mutableMapOf<String, ItemLanguageOptionBinding>()
 
     override fun initView() {
         enableInsetsView(binding.settingsScroll, top = true, bottom = false)
+        setupBeepOption()
         setupLanguageOptions()
         updateLanguageView()
     }
 
     override fun loadData() {
+    }
+
+    private fun setupBeepOption() {
+        val isBeepEnabled = SPUtil.getBoolean(
+            SPUtil.KEY_BEEP_ENABLED,
+            SPUtil.DEFAULT_BEEP_ENABLED,
+            requireContext()
+        )
+        binding.scBeep.isChecked = isBeepEnabled
+        updateBeepStatus(isBeepEnabled)
+
+        binding.scBeep.setOnCheckedChangeListener { _, isChecked ->
+            SPUtil.set(SPUtil.KEY_BEEP_ENABLED, isChecked, requireContext())
+            updateBeepStatus(isChecked)
+        }
+
+        binding.layoutBeepOption.setOnClickListener {
+            binding.scBeep.isChecked = !binding.scBeep.isChecked
+        }
     }
 
     private fun setupLanguageOptions() {
@@ -42,6 +64,16 @@ class SettingsFragment : BaseFragment<SettingsFragmentBinding>(SettingsFragmentB
         optionBinding.layoutLanguageOption.setOnClickListener {
             changeLanguage(option.code)
         }
+    }
+
+    private fun updateBeepStatus(isEnabled: Boolean) {
+        binding.tvBeepStatus.setText(
+            if (isEnabled) {
+                R.string.settings_beep_enabled
+            } else {
+                R.string.settings_beep_disabled
+            }
+        )
     }
 
     private fun changeLanguage(language: String) {

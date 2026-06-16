@@ -13,7 +13,6 @@ object LanguageManager {
     const val LANGUAGE_CHINESE = "zh"
     const val LANGUAGE_ARABIC = "ar"
 
-    private const val PREF_NAME = "xizhou_settings"
     private const val KEY_LANGUAGE = "language"
 
     val languageOptions = listOf(
@@ -52,15 +51,11 @@ object LanguageManager {
     )
 
     fun getLanguage(context: Context): String {
-        return context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-            .getString(KEY_LANGUAGE, LANGUAGE_SYSTEM) ?: LANGUAGE_SYSTEM
+        return SPUtil.getString(KEY_LANGUAGE, LANGUAGE_SYSTEM, context)
     }
 
     fun setLanguage(context: Context, language: String) {
-        context.getSharedPreferences(PREF_NAME, Context.MODE_PRIVATE)
-            .edit()
-            .putString(KEY_LANGUAGE, language)
-            .apply()
+        SPUtil.set(KEY_LANGUAGE, language, context)
     }
 
     fun wrapContext(context: Context): ContextWrapper {

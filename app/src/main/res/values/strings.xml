@@ -135,6 +135,9 @@
     <string name="settings_subtitle">Tune XIZHOU to your preferred way of working.</string>
     <string name="settings_brand_mark">X</string>
     <string name="settings_section_preferences">Preferences</string>
+    <string name="settings_beep">Beep on scan</string>
+    <string name="settings_beep_enabled">Sound feedback is enabled</string>
+    <string name="settings_beep_disabled">Sound feedback is muted</string>
     <string name="settings_language">Language</string>
     <string name="settings_language_desc">Choose the display language for the app.</string>
     <string name="settings_current_language">Current language: %s</string>

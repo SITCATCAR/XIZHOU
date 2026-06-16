@@ -37,22 +37,26 @@ abstract class BaseFragment<vb: ViewBinding>(val infate:(LayoutInflater, ViewGro
 
     abstract fun initView()
     abstract fun loadData()
-
     protected fun enableInsetsView(view: View, top: Boolean,bottom: Boolean){
+        // 加上view本身设置的边距，SettingsFragment中的ScrollView
+        val initialLeft = view.paddingLeft
+        val initialTop = view.paddingTop
+        val initialRight = view.paddingRight
+        val initialBottom = view.paddingBottom
 
         ViewCompat.setOnApplyWindowInsetsListener(view) { v, insets->
             val ime = insets.getInsets(WindowInsetsCompat.Type.ime())
             val systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars())
             val imeVisible = insets.isVisible(WindowInsetsCompat.Type.ime())
 
-            val chosedBottom=if(imeVisible) ime.bottom else systemBars.bottom
+            val chosenBottom = if (imeVisible) ime.bottom else systemBars.bottom
 
             v.updatePadding(
-                left = systemBars.left,
-                right = systemBars.right
+                left = initialLeft + systemBars.left,
+                top = if (top) initialTop + systemBars.top else initialTop,
+                right = initialRight + systemBars.right,
+                bottom = if (bottom) initialBottom + chosenBottom else initialBottom
             )
-            if (top)v.updatePadding(top = systemBars.top)
-            if (bottom)v.updatePadding(bottom = chosedBottom)
 
             insets
         }

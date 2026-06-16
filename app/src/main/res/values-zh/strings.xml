@@ -136,6 +136,9 @@
     <string name="settings_subtitle">按照你的使用习惯调整 XIZHOU。</string>
     <string name="settings_brand_mark">X</string>
     <string name="settings_section_preferences">偏好设置</string>
+    <string name="settings_beep">扫描提示音</string>
+    <string name="settings_beep_enabled">扫描成功时播放提示音</string>
+    <string name="settings_beep_disabled">已关闭扫描提示音</string>
     <string name="settings_language">语言</string>
     <string name="settings_language_desc">选择应用的显示语言。</string>
     <string name="settings_current_language">当前语言：%s</string>

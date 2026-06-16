@@ -64,15 +64,11 @@
                     android:orientation="horizontal"
                     android:padding="@dimen/cm_dp_18">
 
-                    <TextView
+                    <androidx.appcompat.widget.AppCompatImageView
                         android:layout_width="@dimen/cm_dp_48"
                         android:layout_height="@dimen/cm_dp_48"
-                        android:background="@drawable/aizuomaoche"
-                        android:gravity="center"
-                        android:text="@string/settings_brand_mark"
-                        android:textColor="@color/xizhou_on_primary"
-                        android:textSize="@dimen/cm_sp_22"
-                        android:textStyle="bold" />
+                        app:srcCompat="@drawable/aizuomaoche"
+                        android:gravity="center"/>
 
                     <LinearLayout
                         android:layout_width="0dp"
@@ -108,6 +104,67 @@
                 android:textColor="@color/xizhou_on_surface"
                 android:textSize="@dimen/cm_sp_16"
                 android:textStyle="bold" />
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardBeep"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/cm_dp_10"
+                app:cardBackgroundColor="@color/xizhou_surface"
+                app:cardCornerRadius="@dimen/cm_dp_8"
+                app:cardElevation="@dimen/cm_dp_1"
+                app:strokeColor="@color/xizhou_border"
+                app:strokeWidth="@dimen/cm_dp_1">
+
+                <LinearLayout
+                    android:id="@+id/layoutBeepOption"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="?attr/selectableItemBackground"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:minHeight="@dimen/cm_dp_72"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/cm_dp_18">
+
+                    <ImageView
+                        android:layout_width="@dimen/cm_dp_36"
+                        android:layout_height="@dimen/cm_dp_36"
+                        android:background="@drawable/bg_setting_icon_secondary"
+                        android:padding="@dimen/cm_dp_8"
+                        android:src="@drawable/ic_volume" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/cm_dp_12"
+                        android:layout_marginEnd="@dimen/cm_dp_12"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_beep"
+                            android:textColor="@color/xizhou_on_surface"
+                            android:textSize="@dimen/cm_sp_16"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvBeepStatus"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/cm_dp_3"
+                            android:textColor="@color/xizhou_on_surface_variant"
+                            android:textSize="@dimen/cm_sp_12" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/scBeep"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -140,7 +197,8 @@
                         android:layout_height="@dimen/cm_dp_36"
                         android:background="@drawable/bg_setting_icon"
                         android:padding="@dimen/cm_dp_8"
-                        android:src="@drawable/ic_language" />
+                        android:src="@drawable/ic_language"
+                        />
 
                     <LinearLayout
                         android:layout_width="0dp"

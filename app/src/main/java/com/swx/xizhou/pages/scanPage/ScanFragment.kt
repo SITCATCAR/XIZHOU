@@ -33,6 +33,7 @@ import com.swx.xizhou.activity.ScanResultActivity
 import com.swx.xizhou.model.YoutubeType
 import com.swx.xizhou.pages.historyPage.HistoryPagerFragment
 import com.swx.xizhou.util.PermissionHelper
+import com.swx.xizhou.util.SPUtil
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -305,6 +306,9 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
 
 
     private fun playScanSuccessSound(){
+        if (!SPUtil.getBoolean(SPUtil.KEY_BEEP_ENABLED, SPUtil.DEFAULT_BEEP_ENABLED, requireContext())) {
+            return
+        }
         if(isSoundLoaded && scanSuccessSoundId!=0){
             soundPool?.play(scanSuccessSoundId,1.0f,1.0f,1,0,1.0f)
         }
