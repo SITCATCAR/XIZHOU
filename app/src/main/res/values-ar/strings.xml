@@ -1,0 +1,144 @@
+<resources>
+    <string name="app_name">XIZHOU</string>
+
+    <!-- Create Fragment -->
+    <string name="create_title">إنشاء</string>
+    <string name="create_subtitle">اختر قالب رمز QR</string>
+    <string name="create_lens_title">جاهز للإنشاء</string>
+    <string name="create_lens_subtitle">اختر نوعا وحوله إلى رمز قابل للمشاركة.</string>
+
+    <!-- Common Actions -->
+    <string name="create">إنشاء</string>
+    <string name="save">حفظ</string>
+    <string name="share">مشاركة</string>
+    <string name="confirm">تأكيد</string>
+    <string name="cancel">إلغاء</string>
+    <string name="delete">حذف</string>
+    <string name="open">فتح</string>
+    <string name="gallery">المعرض</string>
+    <string name="history">السجل</string>
+    <string name="title">العنوان</string>
+    <string name="content_label">المحتوى</string>
+    <string name="untitled">بدون عنوان</string>
+
+    <!-- Inputs -->
+    <string name="url">الرابط</string>
+    <string name="video_id">معرف الفيديو</string>
+    <string name="channel_url">رابط القناة</string>
+    <string name="username">اسم المستخدم</string>
+    <string name="hint_youtube_url">أدخل رابط YouTube</string>
+    <string name="hint_youtube_video_id">أدخل معرف فيديو YouTube</string>
+    <string name="hint_youtube_channel_url">أدخل رابط قناة YouTube</string>
+    <string name="hint_x_url">أدخل رابط X</string>
+    <string name="hint_x_username">أدخل اسم مستخدم X</string>
+    <string name="hint_facebook_url">أدخل رابط Facebook</string>
+    <string name="hint_facebook_username">أدخل اسم مستخدم Facebook</string>
+
+    <!-- QR -->
+    <string name="generate_qr_code">إنشاء رمز QR</string>
+    <string name="qr_code">رمز QR</string>
+    <string name="qr_code_content">محتوى رمز QR</string>
+    <string name="toast_insert_success">تمت الإضافة بنجاح!</string>
+    <string name="saved_to_gallery">تم الحفظ في المعرض</string>
+    <string name="save_failed">فشل الحفظ: %s</string>
+    <string name="qr_code_not_found">لم يتم العثور على رمز QR</string>
+
+    <!-- History -->
+    <string name="edit_title">تعديل العنوان</string>
+    <string name="hint_new_title">أدخل عنوانا جديدا</string>
+    <string name="title_updated">تم تحديث العنوان</string>
+    <string name="title_empty_error">لا يمكن أن يكون العنوان فارغا</string>
+    <string name="has_no_data">لا يوجد شيء هنا بعد~</string>
+    <string name="select_mode">تحديد</string>
+    <string name="exit_selection">خروج</string>
+    <string name="select_all">تحديد الكل</string>
+    <string name="delete_confirm">تأكيد الحذف</string>
+    <string name="delete_confirm_message">هل تريد حذف %d عناصر؟</string>
+    <string name="delete_completed">تم حذف %d عناصر</string>
+    <string name="selection_title">تحديد العناصر</string>
+    <string name="selected_count">تم تحديد %d</string>
+    <string name="item_detail_message">العنصر %d</string>
+    <string name="history_detail">تفاصيل السجل</string>
+
+    <!-- Calendar -->
+    <string name="calendar_event_title">عنوان الحدث</string>
+    <string name="calendar_location">الموقع</string>
+    <string name="calendar_description">الوصف</string>
+    <string name="start_time">وقت البدء</string>
+    <string name="end_time">وقت الانتهاء</string>
+    <string name="select_date">اختر التاريخ</string>
+    <string name="select_time">اختر الوقت</string>
+    <string name="all_day">طوال اليوم</string>
+    <string name="hint_calendar_title">أدخل عنوان الحدث</string>
+    <string name="hint_calendar_location">أدخل الموقع (اختياري)</string>
+    <string name="hint_calendar_description">أدخل وصف الحدث (اختياري)</string>
+    <string name="date_time_format" formatted="false">%s %s</string>
+    <string name="date_format">yyyy-MM-dd</string>
+    <string name="time_format">HH:mm</string>
+    <string name="calendar_generated">تم إنشاء رمز QR للتقويم</string>
+    <string name="add_to_calendar">إضافة إلى التقويم</string>
+
+    <!-- Types -->
+    <string name="type_youtube">YouTube</string>
+    <string name="type_calendar">التقويم</string>
+    <string name="type_text">نص</string>
+    <string name="type_x">X</string>
+    <string name="type_facebook">Facebook</string>
+    <string name="result_youtube">YouTube</string>
+    <string name="result_calendar">حدث تقويم</string>
+    <string name="result_text">نص</string>
+    <string name="result_x">X</string>
+    <string name="result_facebook">Facebook</string>
+    <string name="create_type_x">X</string>
+    <string name="create_type_youtube">YouTube</string>
+    <string name="create_type_facebook">Facebook</string>
+    <string name="create_type_calendar">التقويم</string>
+
+    <!-- Errors -->
+    <string name="error_empty_input">يرجى إدخال المحتوى</string>
+    <string name="error_empty_title">يرجى إدخال عنوان الحدث</string>
+    <string name="error_end_before_start">لا يمكن أن يكون وقت الانتهاء قبل وقت البدء</string>
+    <string name="permission_denied">تم رفض الإذن</string>
+    <string name="error_record_not_found">لم يتم العثور على السجل</string>
+    <string name="error_qr_image_not_found">صورة رمز QR غير موجودة</string>
+    <string name="error_generation_failed">فشل الإنشاء</string>
+    <string name="error_no_history">لا توجد بيانات سجل</string>
+    <string name="error_permission_refused">تم رفض الإذن</string>
+    <string name="error_invalid_calendar_data">بيانات التقويم غير صالحة</string>
+    <string name="error_save_unknown">خطأ غير معروف</string>
+    <string name="error_save_media_entry">فشل إنشاء عنصر الوسائط</string>
+
+    <!-- Tabs -->
+    <string name="tab_scan">مسح</string>
+    <string name="tab_create">إنشاء</string>
+
+    <!-- Scan Result -->
+    <string name="scan_result">نتيجة المسح</string>
+
+    <!-- Settings -->
+    <string name="settings_title">الإعدادات</string>
+    <string name="settings_subtitle">اضبط XIZHOU بالطريقة التي تناسبك.</string>
+    <string name="settings_brand_mark">X</string>
+    <string name="settings_section_preferences">التفضيلات</string>
+    <string name="settings_language">اللغة</string>
+    <string name="settings_language_desc">اختر لغة عرض التطبيق.</string>
+    <string name="settings_current_language">اللغة الحالية: %s</string>
+    <string name="language_system">اتباع النظام</string>
+    <string name="language_system_desc">استخدم لغة الهاتف تلقائيا</string>
+    <string name="language_system_tag">تلقائي</string>
+    <string name="language_system_flag">🌐</string>
+    <string name="language_english">الإنجليزية</string>
+    <string name="language_english_native">English</string>
+    <string name="language_english_tag">EN</string>
+    <string name="language_english_flag">🇺🇸</string>
+    <string name="language_chinese">الصينية المبسطة</string>
+    <string name="language_chinese_native">简体中文</string>
+    <string name="language_chinese_tag">ZH</string>
+    <string name="language_chinese_flag">🇨🇳</string>
+    <string name="language_arabic">العربية</string>
+    <string name="language_arabic_native">العربية</string>
+    <string name="language_arabic_tag">AR</string>
+    <string name="language_arabic_flag">🇸🇦</string>
+    <string name="settings_about">حول XIZHOU</string>
+    <string name="settings_about_desc">مشروع تدريبي لمسح وإنشاء رموز QR</string>
+</resources>

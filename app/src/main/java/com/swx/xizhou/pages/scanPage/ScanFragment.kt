@@ -2,6 +2,8 @@ package com.swx.xizhou.pages.scanPage
 
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.media.AudioAttributes
+import android.media.SoundPool
 import android.net.Uri
 import android.util.Log
 import androidx.activity.result.contract.ActivityResultContracts
@@ -17,6 +19,7 @@ import com.google.mlkit.vision.barcode.BarcodeScanning
 import com.google.mlkit.vision.barcode.common.Barcode
 import com.google.mlkit.vision.common.InputImage
 import com.swx.xizhou.BaseFragment
+import com.swx.xizhou.R
 import com.swx.xizhou.database.HistoryDBHelper
 import com.swx.xizhou.database.HistoryItemDTO
 import com.swx.xizhou.database.HistoryMapper
@@ -51,8 +54,14 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
         BarcodeScanning.getClient()
     }
 
+    private var soundPool: SoundPool?=null
+    private var scanSuccessSoundId:Int = 0
+    private var isSoundLoaded=false
+
     override fun initView() {
         cameraExecutor= Executors.newSingleThreadExecutor()
+
+        initScanSound()
 
         PermissionHelper.onPermissionResult += ::onPermissionResult
 
@@ -76,13 +85,18 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
         isScanning = false
     }
 
-    //销毁时释放相机资源
+    //销毁时释放相机等资源
     override fun onDestroyView() {
         super.onDestroyView()
         imageAnalyzer?.clearAnalyzer()
         cameraProvider?.unbindAll()
         cameraExecutor.shutdown()
         scanner.close()
+
+        soundPool?.release()
+        soundPool=null
+        isSoundLoaded=false
+
         isCameraStarted = false
     }
 
@@ -194,6 +208,8 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
 
         val barcode = barcodes.firstOrNull() ?: return
         val value = barcode.rawValue ?: return
+        //成功提示音
+        playScanSuccessSound()
 
         // ML Kit的valueType进行分类
         val type = when (barcode.valueType) {
@@ -270,6 +286,27 @@ class ScanFragment: BaseFragment<ScanFragmentBinding>(ScanFragmentBinding::infla
                 )
                 historyMapper.insert(dto, HistoryDBHelper.S_TABLE_NAME)
             }
+        }
+    }
+
+    private fun initScanSound(){
+        val audioAttributes =
+            AudioAttributes.Builder().setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION).build()
+        soundPool= SoundPool.Builder().setMaxStreams(1).setAudioAttributes(audioAttributes).build()
+
+        scanSuccessSoundId=soundPool?.load(requireContext(),R.raw.beep,1)?:0
+        soundPool?.setOnLoadCompleteListener { _,simpleId, status ->
+            if(status==0 && simpleId==scanSuccessSoundId){
+                isSoundLoaded=true
+            }
+        }
+    }
+
+
+    private fun playScanSuccessSound(){
+        if(isSoundLoaded && scanSuccessSoundId!=0){
+            soundPool?.play(scanSuccessSoundId,1.0f,1.0f,1,0,1.0f)
         }
     }
 

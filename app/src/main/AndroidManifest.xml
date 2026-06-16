@@ -18,6 +18,7 @@
         android:roundIcon="@drawable/aizuomaoche"
         android:supportsRtl="true"
         android:theme="@style/Theme.XIZHOU">
+
         <activity
             android:name=".activity.XCreateActivity"
             android:exported="false" />

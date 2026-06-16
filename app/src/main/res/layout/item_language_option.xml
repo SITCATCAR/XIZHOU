@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layoutLanguageOption"
+    style="@style/SettingsLanguageRow"
+    android:layoutDirection="locale">
+
+    <RadioButton
+        android:id="@+id/rbLanguage"
+        style="@style/SettingsLanguageRadio" />
+
+    <TextView
+        android:id="@+id/tvLanguageFlag"
+        android:layout_width="@dimen/cm_dp_38"
+        android:layout_height="@dimen/cm_dp_38"
+        android:layout_marginStart="@dimen/cm_dp_10"
+        android:background="@drawable/bg_language_flag"
+        android:gravity="center"
+        android:textSize="@dimen/cm_sp_20" />
+
+    <LinearLayout
+        style="@style/SettingsLanguageTextGroup">
+
+        <TextView
+            android:id="@+id/tvLanguageName"
+            style="@style/SettingsLanguageTitle" />
+
+        <TextView
+            android:id="@+id/tvLanguageNativeName"
+            style="@style/SettingsLanguageSubtitle" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvLanguageTag"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/cm_dp_28"
+        android:background="@drawable/bg_language_tag"
+        android:gravity="center"
+        android:minWidth="@dimen/cm_dp_42"
+        android:paddingStart="@dimen/cm_dp_10"
+        android:paddingEnd="@dimen/cm_dp_10"
+        android:textColor="@color/xizhou_primary_dark"
+        android:textSize="@dimen/cm_sp_12"
+        android:textStyle="bold" />
+</LinearLayout>

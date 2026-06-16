@@ -4,20 +4,8 @@
     android:id="@+id/settingsRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/xizhou_background">
-
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:minHeight="?attr/actionBarSize"
-        android:background="@color/xizhou_primary"
-        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-        app:title="@string/settings_title" />
+    android:background="@color/xizhou_background"
+    android:layoutDirection="locale">
 
     <ScrollView
         android:id="@+id/settingsScroll"
@@ -33,7 +21,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar">
+        app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -79,7 +67,7 @@
                     <TextView
                         android:layout_width="@dimen/cm_dp_48"
                         android:layout_height="@dimen/cm_dp_48"
-                        android:background="@drawable/bg_setting_brand"
+                        android:background="@drawable/aizuomaoche"
                         android:gravity="center"
                         android:text="@string/settings_brand_mark"
                         android:textColor="@color/xizhou_on_primary"
@@ -185,67 +173,10 @@
                     android:background="@color/xizhou_divider" />
 
                 <LinearLayout
-                    android:id="@+id/layoutLanguageSystem"
-                    style="@style/SettingsLanguageRow">
-
-                    <RadioButton
-                        android:id="@+id/rbLanguageSystem"
-                        style="@style/SettingsLanguageRadio" />
-
-                    <LinearLayout
-                        style="@style/SettingsLanguageTextGroup">
-
-                        <TextView
-                            style="@style/SettingsLanguageTitle"
-                            android:text="@string/language_system" />
-
-                        <TextView
-                            style="@style/SettingsLanguageSubtitle"
-                            android:text="@string/language_system_desc" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutLanguageEnglish"
-                    style="@style/SettingsLanguageRow">
-
-                    <RadioButton
-                        android:id="@+id/rbLanguageEnglish"
-                        style="@style/SettingsLanguageRadio" />
-
-                    <LinearLayout
-                        style="@style/SettingsLanguageTextGroup">
-
-                        <TextView
-                            style="@style/SettingsLanguageTitle"
-                            android:text="@string/language_english" />
-
-                        <TextView
-                            style="@style/SettingsLanguageSubtitle"
-                            android:text="English" />
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/layoutLanguageChinese"
-                    style="@style/SettingsLanguageRow">
-
-                    <RadioButton
-                        android:id="@+id/rbLanguageChinese"
-                        style="@style/SettingsLanguageRadio" />
-
-                    <LinearLayout
-                        style="@style/SettingsLanguageTextGroup">
-
-                        <TextView
-                            style="@style/SettingsLanguageTitle"
-                            android:text="@string/language_chinese" />
-
-                        <TextView
-                            style="@style/SettingsLanguageSubtitle"
-                            android:text="@string/language_chinese_native" />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:id="@+id/layoutLanguageOptions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
             </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
